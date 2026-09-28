@@ -14,6 +14,6 @@ class GetYesNoAnswer {
 
     if(response.statusCode != 200 ) throw Exception("Error en la petición");
 
-    return yesNoModel!.toMessageEntity();   
+    return yesNoModel.toMessageEntity();   
   }
 }

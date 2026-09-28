@@ -28,8 +28,12 @@ class HerMessageBubble extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 30,),
-
-        _ImageBubble(message.imageUrl ?? ''),
+        
+        // Si existe una imagen agrega un espacio de 10 pixeles
+       if(message.imageUrl != null) ...[
+         const SizedBox(height: 10,),
+         _ImageBubble(message.imageUrl!),
+       ],
 
         const SizedBox(height: 10,)
       ],

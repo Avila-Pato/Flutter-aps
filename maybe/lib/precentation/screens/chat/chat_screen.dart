@@ -61,7 +61,7 @@ final chatProvider = context.watch<ChatProviders>();
                     // );
 
                   })),
-               MessageFieldBox(onValue: (String value) { value;  },)
+               MessageFieldBox(onValue: chatProvider.sendMessage,)
             ],
           ),
       ),

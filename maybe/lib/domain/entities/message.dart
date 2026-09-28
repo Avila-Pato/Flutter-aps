@@ -7,5 +7,5 @@ class Message {
 
   Message({required this.text, this.imageUrl, required this.fromWho});
 
-  static fromJsonMap(data) {}
+  // static fromJsonMap(data) {}
 }
