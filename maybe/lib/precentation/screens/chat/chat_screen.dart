@@ -1,6 +1,11 @@
 
 import 'package:flutter/material.dart';
+import 'package:maybe/domain/entities/message.dart';
+import 'package:maybe/precentation/providers/chat_providers.dart';
+import 'package:maybe/precentation/widgets/chat/her_message_bubble.dart';
 import 'package:maybe/precentation/widgets/chat/my_message_bubble.dart';
+import 'package:maybe/precentation/widgets/shared/message_field_box.dart';
+import 'package:provider/provider.dart';
  
  class ChatScreen extends StatelessWidget {
   const ChatScreen({super.key});
@@ -30,6 +35,9 @@ class _ChatView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+final chatProvider = context.watch<ChatProviders>();
+
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
@@ -37,14 +45,23 @@ class _ChatView extends StatelessWidget {
             children: [
               Expanded(
                 child: ListView.builder(
-                  physics: const BouncingScrollPhysics(), //
-                  itemCount: 10,
+                 physics: const BouncingScrollPhysics(), //
+                 controller: chatProvider.chatScrollController, // controlador de scroll de la lista
+                  itemCount: chatProvider.messagesList.length,
                   itemBuilder: (context, index){
-                    return const MyMessageBubble();
-                  }), 
-              )
-              // _Messages(),
-              // _InputChat(),
+                    final message = chatProvider.messagesList[index];
+                    return (message.fromWho == FromWho.hers)
+                      ? HerMessageBubble(message: message)
+                      : MyMessageBubble(message: message);
+                    
+                    // // No hay datos reales mensajes de prueba dentro de itemBuilder
+                    // final message = Message(
+                    //   text: 'Hola Pato', 
+                    //   fromWho: FromWho.hers
+                    // );
+
+                  })),
+               MessageFieldBox(onValue: (String value) { value;  },)
             ],
           ),
       ),
