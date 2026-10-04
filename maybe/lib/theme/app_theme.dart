@@ -25,7 +25,7 @@ class AppTheme {
     return ThemeData(
       useMaterial3: true,
       colorSchemeSeed: _colorListThemes[selectedColor],
-      appBarTheme: const AppBarTheme(backgroundColor: _customColor),
+      // appBarTheme: const AppBarTheme(backgroundColor: _customColor),
       brightness: Brightness.dark,
     );
   }

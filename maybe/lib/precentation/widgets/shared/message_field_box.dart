@@ -9,14 +9,17 @@ class MessageFieldBox extends StatelessWidget {
   final textController = TextEditingController();
   final focusNode = FocusNode();
 
-  // Estilos de la caja ade
-  final outlineInputBorder = UnderlineInputBorder(
+  // Estilos de la caja cuanndo hace click
+  final outlineInputBorder = OutlineInputBorder(
     borderSide: const BorderSide(color: Colors.transparent),
+    // Borde focus cuando aprete el cursor
     borderRadius: BorderRadius.circular(40),
   );
 
   late final inputDecoration = InputDecoration(
+    
     focusedBorder: outlineInputBorder,
+    enabledBorder: outlineInputBorder,
     filled: true,
     fillColor: Colors.white,
     suffixIcon: IconButton(
@@ -30,12 +33,14 @@ class MessageFieldBox extends StatelessWidget {
     ),
     hintText: 'Escribe tu mensaje aquí ...',
     hintStyle: const TextStyle(color: Colors.blue, fontSize: 18),
+    
   );
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       style: const TextStyle(color: Colors.blue, fontSize: 18),
+      
 
       // Controlador
       onTapOutside: (event) => {

@@ -53,6 +53,8 @@ class _ImageBubble extends StatelessWidget {
       borderRadius: BorderRadius.circular(20),
       child: Image.network(
         imageUrl,
+        // En web: usa <img> del navegador para evitar el bloqueo CORS
+        webHtmlElementStrategy: WebHtmlElementStrategy.prefer, // para evitar el bloqueo
         width: 150,
         height: 150,
         fit: BoxFit.cover,
